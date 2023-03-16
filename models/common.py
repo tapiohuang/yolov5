@@ -42,6 +42,25 @@ def autopad(k, p=None, d=1):  # kernel, padding, dilation
     return p
 
 
+class SplitModule(nn.Module):
+    # Split a module into a list of modules
+    def __init__(self, arg1):
+        super(SplitModule, self).__init__()
+        print("SplitModule: ", arg1)
+
+    def forward(self, x):
+        return x
+
+
+class MergeModule(nn.Module):
+    def __init__(self, arg1):
+        super(MergeModule, self).__init__()
+        print("MergeModule: ", arg1)
+
+    def forward(self, x):
+        return x[0]
+
+
 class Conv(nn.Module):
     # Standard convolution with args(ch_in, ch_out, kernel, stride, padding, groups, dilation, activation)
     default_act = nn.SiLU()  # default activation
